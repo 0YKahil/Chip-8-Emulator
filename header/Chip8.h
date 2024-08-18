@@ -9,6 +9,10 @@
 #include <stdint.h>
 #include <fstream>
 
+const unsigned int START_ADDRESS = 0x0;
+const unsigned int ROM_START_ADDRESS = 0x200; // Location of where memory is reserved for ROMs
+const unsigned int FONTSET_SIZE = 80;
+
 /**
  * Chip 8 Emulator with all its components.
  * 
@@ -22,21 +26,39 @@
  * EVERYTHING WILL BE INIT TO 0 IN MEMORY (using {})
  */
 class Chip8 {
+    public:
 
-public:
-    uint8_t registers[16]{};    // 16 register array
-    uint8_t memory[4096]{};     // memory array of 8 bit items (index is memory address)
+        /**
+         * Constructor to initialize the machine
+         */
+        Chip8();
 
-    uint16_t index{};           // index register
-    uint16_t pc{};              // program counter
+        uint8_t registers[16]{};    // 16 register array
+        uint8_t memory[4096]{};     // memory array of 8 bit items (index is memory address)
 
-    uint16_t stack[16]{};       // 16 level stack to store return addresses
-    uint8_t sp{};               // stack pointer
+        uint16_t index{};           // index register
+        uint16_t pc{};              // program counter
 
-    uint8_t delayTimer{};     
-    uint8_t soundTimer{};       // plays sound when not 0
+        uint16_t stack[16]{};       // 16 level stack to store return addresses
+        uint8_t sp{};               // stack pointer
 
-    uint32_t video[64*32]{};    // 64x32 display memory 
-    uint16_t opcode;
+        uint8_t delayTimer{};     
+        uint8_t soundTimer{};       // plays sound when not 0
+
+        uint32_t video[64*32]{};    // 64x32 display memory 
+        uint16_t opcode;
+
+
+        /**
+         * Loads the ROM instructions into the correct memory addresses
+         * 
+         * @param filename ROM file name and location to be loaded
+         */
+        void loadROM(char const *filename);
+
+        /**
+         * 
+         */
+
 
 };
