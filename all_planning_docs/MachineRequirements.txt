@@ -41,7 +41,7 @@ Machine Specs:
 - 8-bit Delay timer:
     - Decrements at 60hz
 
-- 8-bit Sount Timer:
+- 8-bit Sound Timer:
     - Tone if timer is non-zero
 
 - 16 input keys, each mapped to a corresponding hex value
