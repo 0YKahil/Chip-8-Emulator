@@ -1,0 +1,53 @@
+This file is purely for my requirements that I will want to implement for this emulator
+Everything I found is here: https://austinmorlan.com/posts/chip8_emulator/
+
+## CHIP-8 Documentation
+
+8-bit machine (no using int type) (need to use int8_t and uint8_t)
+
+8-bit wide registers
+
+16-bit address space (up to 64kb of memory)
+
+4096 Bytes (4KB) of memory
+
+
+Machine Specs:
+
+- 16 8-bit width registers:
+    - Labelled V0 to VF
+    - Holds values from 0x00 to 0xFF (1 Byte)
+
+
+- 16-bit index register:
+    - Used for storing memory addresses (8-bit registers can only go up to 0xFF)
+
+- 16-bit PC special register:
+    - Holds next instruction like any other PC
+    - 2 byte instructions
+
+- 4096 Bytes of memory:
+    - Address Space (0x000 to 0xFFF):
+        - 0x000-0x1FF: Reserved for CHIP-8 interpreter
+        - 0x050-0x0A0: Storage space for built in characters (0-F)
+        - 0x200-0xFFF: ROM instructions and free memory
+
+- 16-Level stack:
+    - Allows up to 16 return addresses to be held
+
+- 8-bit Stack pointer SP:
+    - Instruction pointer
+
+- 8-bit Delay timer:
+    - Decrements at 60hz
+
+- 8-bit Sount Timer:
+    - Tone if timer is non-zero
+
+- 16 input keys, each mapped to a corresponding hex value
+
+- 64x32 monochrome display memory
+    - Pixels are either on or off
+    - 32-bit representations to allow using with SDL
+
+
